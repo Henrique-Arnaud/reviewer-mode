@@ -1,9 +1,10 @@
+import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[72px_1fr_20px] items-center justify-items-center min-h-screen pb-20 gap-16 font-[family-name:var(--font-geist-sans)]">
-      <header className="flex flex-row gap-[32px] row-start-1 h-[72px] w-full justify-center items-center transition-all duration-2000 hover:bg-gradient-to-b from-indigo-500/5 from-10% to-emerald-500/1 to-100%">
+    <div className="grid grid-rows-[80px_1fr_20px] items-center justify-items-center min-h-screen pb-20 gap-16 font-[family-name:var(--font-geist-sans)]">
+      <header className="flex flex-row gap-[32px] row-start-1 h-[72px] w-full justify-center items-center hover:bg-gradient-to-b from-black/30 from-0% to-[#0a0a0a]/20 to-75% group">
         <Image
           className="dark:invert"
           src="/next.svg"
@@ -14,19 +15,23 @@ export default function Home() {
         />
         <nav>
           <ul className="flex flex-row gap-4">
-            <li className="cursor-pointer transition-colors hover:text-[#c0c0c0] ">
+            <li className="cursor-pointer transition-colors hover:text-[#c0c0c0]">
               SIGN IN
             </li>
-            <li className="cursor-pointer transition-colors hover:text-[#c0c0c0] ">
+            <li className="cursor-pointer transition-colors hover:text-[#c0c0c0]">
               CREATE ACCOUNT
             </li>
-            <li className="cursor-pointer transition-colors hover:text-[#c0c0c0] ">
+            <li className="cursor-pointer transition-colors hover:text-[#c0c0c0]">
               GAMES
+            </li>
+            <li className="cursor-pointer transition-colors hover:text-[#c0c0c0]">
+              LISTS
             </li>
           </ul>
         </nav>
-        <div>
-          <input className="bg-white rounded-2xl" name="search" type="text"/>
+        <div className="flex items-center">
+          <input className="peer rounded-2xl h-[32px] w-52 bg-white/25 text-white focus:text-black hover:text-black group-hover:text-black p-2 transition-colors duration-400 ease-[cubic-bezier(.165,.84,.44,1)] hover:bg-white/80 group-hover:bg-white/80 focus:bg-white/80 outline-none tracking-[-.01em]" name="search" type="text" />
+          <MagnifyingGlassIcon className="h-[24px] w-[24px] relative right-0 ml-[-28px] transition-colors duration-400 group-hover:text-gray-700 peer-focus:text-gray-700 cursor-pointer" />
         </div>
       </header>
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
