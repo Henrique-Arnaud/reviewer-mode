@@ -5,7 +5,7 @@ import ReCAPTCHA from 'react-google-recaptcha'
 
 export default function CaptchaForm({ children }: { children: React.ReactNode }) {
   const recaptchaRef = createRef<ReCAPTCHA>()
-  const SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!
+  // const SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -41,7 +41,8 @@ export default function CaptchaForm({ children }: { children: React.ReactNode })
       </button>
 
       <div className="w-fit ml-auto mr-auto mt-6 mb-6">
-        <ReCAPTCHA sitekey={SITE_KEY} ref={recaptchaRef} theme="dark" />
+        teste
+        {/* <ReCAPTCHA sitekey={SITE_KEY} ref={recaptchaRef} theme="dark" /> */}
       </div>
     </form>
   )
