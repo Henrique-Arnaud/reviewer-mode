@@ -19,5 +19,9 @@ module.exports = {
       },
     },
   },
+  safelist: [
+    'tracking-[-.01em]',
+    'ease-[cubic-bezier(.165,.84,.44,1)]',
+  ],
   plugins: [],
 }
