@@ -1,11 +1,11 @@
 'use client'
 
-import { createRef } from 'react'
+import { useRef } from 'react'
 import ReCAPTCHA from 'react-google-recaptcha'
 
 export default function CaptchaForm({ children }: { children: React.ReactNode }) {
-  const recaptchaRef = createRef<ReCAPTCHA>()
-  // const SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!
+  const recaptchaRef = useRef<ReCAPTCHA>(null)
+  const SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -41,8 +41,14 @@ export default function CaptchaForm({ children }: { children: React.ReactNode })
       </button>
 
       <div className="w-fit ml-auto mr-auto mt-6 mb-6">
-        teste
-        {/* <ReCAPTCHA sitekey={SITE_KEY} ref={recaptchaRef} theme="dark" /> */}
+        <ReCAPTCHA
+          sitekey={SITE_KEY}
+          ref={recaptchaRef}
+          onChange={(token) => {
+            console.log('Captcha token:', token)
+          }}
+          theme="dark"
+        />
       </div>
     </form>
   )
