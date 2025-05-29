@@ -15,8 +15,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Reviewe Mode",
+  title: "Reviewer Mode",
   description: "Review your favorite games here!",
+  keywords: ["games", "reviews", "gaming community"],
+  authors: [{ name: "Reviewer Mode Team" }],
+  robots: "index, follow",
 };
 
 export default function RootLayout({
