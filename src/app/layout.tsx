@@ -20,8 +20,10 @@ export const metadata: Metadata = {
   keywords: ["games", "reviews", "gaming community"],
   authors: [{ name: "Reviewer Mode Team" }],
   robots: "index, follow",
+  other: {
+    'google-site-verification': 'DsbKXUfZPmW1kDAGZCjPuPsw4nM1vCrzvm8jSnQmmww'
+  }
 };
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -34,7 +36,7 @@ export default function RootLayout({
       >
         <NavBar />
         {children}
-        <Footer/>
+        <Footer />
       </body>
     </html>
   );
