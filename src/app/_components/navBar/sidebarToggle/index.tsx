@@ -1,29 +1,53 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { Bars3Icon } from '@heroicons/react/24/outline'
-import NavBarItem from '../navBarItem'
+import { useClickOutsideComponentObserver } from '@/app/_utils/handleClickOutsideComponent'
 
-export default function SidebarToggle() {
-  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false)
+interface SidebarToggleProps {
+  children: React.ReactNode
+}
+
+export default function SidebarToggle({ children }: SidebarToggleProps) {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+  const navRef = useRef(null)
+
+  const toggleSidebar = () => setIsSidebarOpen((prev) => !prev)
+
+  const closeSidebarIfItIsOpen = () => {
+    if (isSidebarOpen) {
+      setIsSidebarOpen(false)
+    }
+    return
+  }
+
+  useClickOutsideComponentObserver(navRef, closeSidebarIfItIsOpen)
   return (
-    <div className={`flex flex-col gap-6 mt-4 ml-1.5 text-white fixed z-10 w-full transition-all duration-500 ${isSidebarOpen ? 'bg-gray-950 pb-1' : ''}`}>
-      <Bars3Icon className='h-[40px] w-fit relative' onClick={() => setIsSidebarOpen(!isSidebarOpen)} />
-      <nav className={`whitespace-nowrap w-full flex transition-all duration-500 relative ${isSidebarOpen ? 'opacity-100 top-0' : 'opacity-0 top-[-228px]'}`}>
-        <ul className="flex flex-col w-full gap-1">
-          <NavBarItem url="/sign-in"> 
-            SIGN IN
-          </NavBarItem>
-          <NavBarItem url='/create-account'>
-            CREATE ACCOUNT
-          </NavBarItem>
-          <NavBarItem url="/games">
-            GAMES
-          </NavBarItem>
-          <NavBarItem url='/lists'>
-            LISTS
-          </NavBarItem>
-        </ul>
+    <div
+      ref={navRef}
+      className={`flex flex-col fixed gap-6 ml-1.5 w-full text-white transition-all duration-500 ${
+        isSidebarOpen ? 'bg-gray-950 pb-1' : ''
+      }`}
+    >
+      <button
+        aria-expanded={isSidebarOpen}
+        aria-controls="sidebar-nav"
+        className="h-10 w-fit"
+        onClick={toggleSidebar}
+      >
+        <Bars3Icon className="h-10 w-10" />
+      </button>
+
+      <nav
+        id="sidebar-nav"
+        role="navigation"
+        className={`w-full whitespace-nowrap transition-transform duration-500 origin-top ${
+          isSidebarOpen
+            ? 'scale-y-100 opacity-100 pointer-events-auto'
+            : 'scale-y-0 opacity-0 pointer-events-none'
+        }`}
+      >
+        {isSidebarOpen && children}
       </nav>
     </div>
   )
