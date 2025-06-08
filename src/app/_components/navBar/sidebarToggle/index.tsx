@@ -25,7 +25,7 @@ export default function SidebarToggle({ children }: SidebarToggleProps) {
   return (
     <div
       ref={navRef}
-      className={`flex flex-col fixed gap-6 ml-1.5 w-full text-white transition-all duration-500 ${
+      className={`flex flex-col fixed gap-6 w-full pt-5 text-white transition-all duration-500 ${
         isSidebarOpen ? 'bg-gray-950 pb-1' : ''
       }`}
     >

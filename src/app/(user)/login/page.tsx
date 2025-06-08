@@ -1,22 +1,35 @@
-import CaptchaForm from '@/app/_components/captchaForm'
+'use client'
 import Input from '@/app/_components/input'
 import React from 'react'
+import { useLoginForm } from './_hooks'
+import { LockClosedIcon, UserIcon } from '@heroicons/react/24/outline'
 
-export default function page() {
+export default function Login() {
+  const { register, errors, handleSubmit, onSubmit } = useLoginForm()
   return (
     <main className="flex flex-col w-full mt-26 mb-36 pl-6 pr-6">
-      <CaptchaForm>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-col gap-3">
           <Input
-            id="email"
-            labelText="E-mail"
-            name="email"
+            {...register('username')}
+            labelText="Username"
+            errorMessage={errors.username?.message}
             type="text"
-            placeholder="yourmail@domain.com"
+            Icon={UserIcon}
           />
-          <Input id="password" labelText="Password" name="password" type="password" />
+          <Input
+            {...register('password')}
+            labelText="Password"
+            errorMessage={errors.password?.message}
+            type="password"
+            Icon={LockClosedIcon}
+          />
         </div>
-      </CaptchaForm>
+        <button className="h-12 w-full mt-6 bg-gray-600 rounded-lg" type="submit">
+          Submit
+        </button>
+        <span className=""></span>
+      </form>
     </main>
   )
 }

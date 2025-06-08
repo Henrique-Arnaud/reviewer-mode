@@ -15,10 +15,8 @@ export default function CaptchaForm({ children }: { children: React.ReactNode })
     const captchaToken = recaptchaRef.current.getValue()
 
     if (!captchaToken) {
-      alert('Please complete the CAPTCHA')
       return
     }
-    alert('Captcha verified')
     // const res = await fetch('/api/verify-captcha', {
     //   method: 'POST',
     //   headers: { 'Content-Type': 'application/json' },
@@ -36,9 +34,7 @@ export default function CaptchaForm({ children }: { children: React.ReactNode })
   return (
     <form onSubmit={handleSubmit} className="w-full flex-col">
       {children}
-      <button className="h-12 w-full mt-6 bg-gray-600 rounded-lg" type="submit">
-        Submit
-      </button>
+
 
       <div className="w-fit ml-auto mr-auto mt-6 mb-6">
         <ReCAPTCHA

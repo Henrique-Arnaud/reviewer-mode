@@ -7,7 +7,7 @@ import NavBarItem from './navBarItem'
 
 export default function NavBar() {
   return (
-    <header className="fixed top-5 w-full h-20 flex">
+    <header className="fixed top-0 w-full h-20 flex z-50">
       <SidebarToggle>
         <ul className="flex flex-col w-full gap-1">
           <NavBarItem url="/login">LOGIN</NavBarItem>
@@ -16,7 +16,7 @@ export default function NavBar() {
           <NavBarItem url="/lists">LISTS</NavBarItem>
         </ul>
       </SidebarToggle>
-      <div className="relative ml-auto mr-auto">
+      <div className="relative ml-auto mr-auto top-5">
         <Link href="/">
           <Image
             className="dark:invert"
