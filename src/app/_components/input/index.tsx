@@ -10,7 +10,7 @@ export default function Input({ labelText, errorMessage, Icon, ...props }: Input
   return (
     <div className="flex flex-col gap-1">
       {labelText && (
-        <label htmlFor={props.id} className="text-xl">
+        <label htmlFor={props.id} className="text-sm text-green-400">
           {labelText}
         </label>
       )}

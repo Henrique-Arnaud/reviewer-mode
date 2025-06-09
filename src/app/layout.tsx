@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Reviewer Mode",
   description: "Review your favorite games here!",
-  keywords: ["games", "reviews", "gaming community"],
+  keywords: ["reviewer mode", "reviewer", "mode", "reviews", "gaming community"],
   authors: [{ name: "Reviewer Mode Team" }],
   robots: "index, follow",
   other: {

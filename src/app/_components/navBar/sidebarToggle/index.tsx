@@ -1,27 +1,25 @@
 'use client'
 
-import React, { useRef, useState } from 'react'
+import React, { useCallback, useRef, useState } from 'react'
 import { Bars3Icon } from '@heroicons/react/24/outline'
 import { useClickOutsideComponentObserver } from '@/app/_utils/handleClickOutsideComponent'
+import NavBarItem from '../navBarItem'
+import { navigationItems } from './const/navBarItems'
 
-interface SidebarToggleProps {
-  children: React.ReactNode
-}
-
-export default function SidebarToggle({ children }: SidebarToggleProps) {
+export default function SidebarToggle() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const navRef = useRef(null)
-
   const toggleSidebar = () => setIsSidebarOpen((prev) => !prev)
 
-  const closeSidebarIfItIsOpen = () => {
+  const closeSidebarIfItIsOpen = useCallback(() => {
     if (isSidebarOpen) {
       setIsSidebarOpen(false)
     }
     return
-  }
+  }, [isSidebarOpen])
 
   useClickOutsideComponentObserver(navRef, closeSidebarIfItIsOpen)
+
   return (
     <div
       ref={navRef}
@@ -47,7 +45,15 @@ export default function SidebarToggle({ children }: SidebarToggleProps) {
             : 'scale-y-0 opacity-0 pointer-events-none'
         }`}
       >
-        {isSidebarOpen && children}
+        {isSidebarOpen && (
+          <ul className="flex flex-col w-full gap-1">
+            {navigationItems.map((item) => (
+              <NavBarItem key={item.id} url={item.url} onClick={() => closeSidebarIfItIsOpen()}>
+                {item.name}
+              </NavBarItem>
+            ))}
+          </ul>
+        )}
       </nav>
     </div>
   )

@@ -1,12 +1,20 @@
 import Link from 'next/link'
 import React from 'react'
 
-export default function NavBarItem({ url, children }: { url: string, children: React.ReactNode }) {
+export default function NavBarItem({
+  url,
+  children,
+  onClick,
+}: {
+  url: string
+  children: React.ReactNode
+  onClick?: () => void
+}) {
   return (
-    <li className="cursor-pointer transition-colors hover:text-[#c0c0c0] bg-gray-800/25 p-2">
-      <Link href={url}>
+    <Link href={url} onClick={onClick}>
+      <li className="cursor-pointer transition-colors hover:text-[#c0c0c0] bg-gray-800/25 active:bg-gray-500 p-2">
         {children}
-      </Link>
-    </li>
+      </li>
+    </Link>
   )
 }
